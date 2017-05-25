@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Optical Illusions(Spiral Eye)</string>
+
+    <string name="warning">Warning</string>
+    <string name="tips">Tips</string>
+    <string name="play">Play</string>
+    <string name="rating">Rating</string>
+    <string name="share">Share</string>
+
+    <string name="warning_msg">
+        \tDon’t use this app if you are sensible to stroboscopic images.\n\n
+
+        \tDon’t allow another people using this app if you are not sure about their stroboscopic images sensitiveness.\n
+    </string>
+
+    <string name="tips_msg">
+        \tHow to play\n
+        \tStep 1: Look at the picture for 30 seconds.\n
+        \tStep 2: Look at something around you.\n\n
+
+        \tIf it does not work, you can do the following:\n
+        \t1.Eyes closer to the phone screen.\n
+        \t2.Stare at the center of the picture.\n
+        \t3.Look at the picture for a longer time such as 60 seconds.\n
+        \t4.Place your phone horizontally.\n
+    </string>
+
+    <string name="list_title">Please choose an optical illusion</string>
+
+    <string name="preview_title">Are you ready to produce an illusion?</string>
+
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="start">Start</string>
+
+</resources>
