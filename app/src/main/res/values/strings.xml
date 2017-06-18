@@ -6,6 +6,7 @@
     <string name="play">Play</string>
     <string name="rating">Rating</string>
     <string name="share">Share</string>
+    <string name="level">Level</string>
 
     <string name="warning_msg">
         \tDon’t use this app if you are sensible to stroboscopic images.\n\n

@@ -18,6 +18,7 @@ import com.facebook.ads.AdSettings;
 import com.facebook.ads.AdSize;
 import com.facebook.ads.AdView;
 import com.google.android.gms.ads.AdRequest;
+import com.umeng.analytics.MobclickAgent;
 
 
 /**
@@ -41,6 +42,18 @@ public class BaseActivity extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 
     @Override
@@ -192,7 +205,7 @@ public class BaseActivity extends Activity {
         if (DEBUG) {
             adRequest = new AdRequest.Builder()
                     .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)// All emulators
-                    .addTestDevice("E89B10531C8CCB95C447A97261F6AA0E")//坚果
+                    .addTestDevice("31387B9AE04ACC468BC9DF9DAFFF96A7")//坚果
                     .build();
         } else {
             adRequest = new AdRequest.Builder()
@@ -208,6 +221,9 @@ public class BaseActivity extends Activity {
     private void addToLayout(View view) {
         if (DEBUG) {
             Log.d(TAG, "addToLayout: ");
+        }
+        if (view == null) {
+            return;
         }
         LinearLayout layout = (LinearLayout) findViewById(R.id.ads_layout);
         layout.removeAllViews();

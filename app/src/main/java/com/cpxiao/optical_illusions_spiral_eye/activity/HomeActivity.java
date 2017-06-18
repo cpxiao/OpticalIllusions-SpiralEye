@@ -25,7 +25,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         mButtonWarning = (Button) findViewById(R.id.warning);
         mButtonTips = (Button) findViewById(R.id.tips);
         mButtonPlay = (Button) findViewById(R.id.play);
-        mButtonRating = (Button) findViewById(R.id.rating);
+        mButtonRating = (Button) findViewById(com.cpxiao.optical_illusions_spiral_eye.R.id.rating);
         mButtonShare = (Button) findViewById(R.id.share);
 
         mButtonWarning.setOnClickListener(this);
@@ -33,6 +33,8 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         mButtonPlay.setOnClickListener(this);
         mButtonRating.setOnClickListener(this);
         mButtonShare.setOnClickListener(this);
+
+        initAdMobAds50("ca-app-pub-4157365005379790/8009860462");
     }
 
     @Override

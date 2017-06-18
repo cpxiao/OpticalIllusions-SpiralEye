@@ -9,12 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.cpxiao.androidutils.library.utils.PreferencesUtils;
 import com.cpxiao.gamelib.activity.BaseActivity;
 import com.cpxiao.optical_illusions_spiral_eye.R;
 import com.cpxiao.optical_illusions_spiral_eye.mode.Data;
-import com.cpxiao.optical_illusions_spiral_eye.mode.Extra;
 
 import java.util.ArrayList;
 
@@ -25,7 +24,7 @@ import java.util.ArrayList;
 
 public class ListActivity extends BaseActivity {
 
-    private static final int ROW_COUNT = 2;
+    private static final int ROW_COUNT = 3;
     private RecyclerView mRecyclerView;
 
     @Override
@@ -37,15 +36,17 @@ public class ListActivity extends BaseActivity {
         ArrayList<Integer> arrayList = Data.getOIGifData();
         NormalAdapter adapter = new NormalAdapter(this, arrayList);
         mRecyclerView.setAdapter(adapter);
+
+        initAdMobAds50("ca-app-pub-4157365005379790/5268216868");
     }
 
 
-    public class NormalAdapter extends RecyclerView.Adapter<NormalAdapter.NormalViewHolder> {
+    class NormalAdapter extends RecyclerView.Adapter<NormalAdapter.NormalViewHolder> {
         private final LayoutInflater mLayoutInflater;
         private final Context mContext;
         private ArrayList<Integer> mDataList;
 
-        public NormalAdapter(Context context, ArrayList<Integer> dataList) {
+        NormalAdapter(Context context, ArrayList<Integer> dataList) {
             mDataList = dataList;
             mContext = context;
             mLayoutInflater = LayoutInflater.from(context);
@@ -55,7 +56,7 @@ public class ListActivity extends BaseActivity {
         public NormalViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = mLayoutInflater.inflate(R.layout.list_item, parent, false);
             GridLayoutManager.LayoutParams params = (GridLayoutManager.LayoutParams) view.getLayoutParams();
-            params.height = (int) (parent.getMeasuredWidth() / ROW_COUNT * 0.618);
+            params.height = (int) (parent.getMeasuredWidth() / ROW_COUNT * 1.3);
             view.setLayoutParams(params);
             return new NormalViewHolder(view);
         }
@@ -69,7 +70,7 @@ public class ListActivity extends BaseActivity {
             if (position < 0 || position >= mDataList.size()) {
                 return;
             }
-            int level = PreferencesUtils.getInt(getApplicationContext(), Extra.Key.LEVEL, Extra.Key.LEVEL_DEFAULT);
+            //            int level = PreferencesUtils.getInt(getApplicationContext(), Extra.Key.LEVEL, Extra.Key.LEVEL_DEFAULT);
 
             final int index = holder.getAdapterPosition();
             final Integer data = mDataList.get(index);
@@ -80,28 +81,11 @@ public class ListActivity extends BaseActivity {
                     Bundle bundle = FullScreenActivity.makeBundle(data);
                     Intent intent = FullScreenActivity.makeIntent(mContext, bundle);
                     startActivity(intent);
-                    //                    Toast.makeText(mContext, "Level " + data.level + " is locked!", Toast.LENGTH_SHORT).show();
                 }
             });
 
-            //            if (data < level) {
-            //                holder.mImageView.setTextColor(ContextCompat.getColor(holder.mImageView.getContext().getApplicationContext(), R.color.common_black));
-            //                holder.mImageView.setOnClickListener(new View.OnClickListener() {
-            //                    @Override
-            //                    public void onClick(View v) {
-            //                        Toast.makeText(mContext, "Level " + data.level + " is locked!", Toast.LENGTH_SHORT).show();
-            //                    }
-            //                });
-            //            } else {
-            //                holder.mImageView.setTextColor(ContextCompat.getColor(holder.mImageView.getContext().getApplicationContext(), R.color.text_success));
-            //                holder.mImageView.setOnClickListener(new View.OnClickListener() {
-            //                    @Override
-            //                    public void onClick(View v) {
-            //                        data.unlockLevel();
-            //                        ClassicGameActivity.comeToMe(mContext, data.level);
-            //                    }
-            //                });
-            //        }
+            String title = getResources().getString(R.string.level) + ": " + (index + 1);
+            holder.mTitle.setText(title);
 
         }
 
@@ -110,20 +94,23 @@ public class ListActivity extends BaseActivity {
             return mDataList == null ? 0 : mDataList.size();
         }
 
-        public class NormalViewHolder extends RecyclerView.ViewHolder {
+        class NormalViewHolder extends RecyclerView.ViewHolder {
             ImageView mImageView;
+            TextView mTitle;
 
-            public NormalViewHolder(View view) {
+            NormalViewHolder(View view) {
                 super(view);
                 mImageView = (ImageView) view.findViewById(R.id.image_view);
+                mTitle = (TextView) view.findViewById(R.id.title);
             }
         }
 
     }
 
     public static Bundle makeBundle() {
-        Bundle bundle = new Bundle();
-        return bundle;
+        return null;
+        //        Bundle bundle = new Bundle();
+        //        return bundle;
     }
 
     public static Intent makeIntent(Context context, Bundle bundle) {
