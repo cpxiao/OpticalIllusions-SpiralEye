@@ -1,4 +1,4 @@
-package com.cpxiao.optical_illusions_spiral_eye.activity;
+package com.cpxiao.optical.illusions.spiral.eye.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,10 +12,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.cpxiao.gamelib.activity.BaseActivity;
-import com.cpxiao.optical_illusions_spiral_eye.R;
-import com.cpxiao.optical_illusions_spiral_eye.mode.Data;
+import com.cpxiao.optical.illusions.spiral.eye.R;
+import com.cpxiao.optical.illusions.spiral.eye.mode.Data;
 
 import java.util.ArrayList;
+
 
 
 /**
@@ -37,7 +38,7 @@ public class ListActivity extends BaseActivity {
         NormalAdapter adapter = new NormalAdapter(this, arrayList);
         mRecyclerView.setAdapter(adapter);
 
-        initAdMobAds50("ca-app-pub-4157365005379790/5268216868");
+//        initAdMobAds50("ca-app-pub-4157365005379790/5268216868");
     }
 
 

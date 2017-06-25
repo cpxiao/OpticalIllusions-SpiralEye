@@ -1,6 +1,7 @@
-package com.cpxiao.optical_illusions_spiral_eye.mode;
+package com.cpxiao.optical.illusions.spiral.eye.mode;
 
-import com.cpxiao.optical_illusions_spiral_eye.R;
+
+import com.cpxiao.optical.illusions.spiral.eye.R;
 
 import java.util.ArrayList;
 

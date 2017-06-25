@@ -81,52 +81,59 @@ public class BaseActivity extends Activity {
     }
 
     private void initFbAds(String placeId, AdSize adSize) {
-        if (DEBUG) {
-            Log.d(TAG, "initFbAds: ");
-        }
-
-        if (TextUtils.isEmpty(placeId)) {
+        try {
             if (DEBUG) {
-                throw new IllegalArgumentException("placeId is empty!");
+                Log.d(TAG, "initFbAds: ");
             }
-            return;
-        }
 
-        mFbAdView = new AdView(this, placeId, adSize);
-
-        mFbAdView.setAdListener(new AdListener() {
-
-            @Override
-            public void onError(Ad ad, AdError error) {
+            if (TextUtils.isEmpty(placeId)) {
                 if (DEBUG) {
-                    Log.d(TAG, "onError: " + error.getErrorCode() + "," + error.getErrorMessage());
+                    throw new IllegalArgumentException("placeId is empty!");
                 }
+                return;
             }
 
-            @Override
-            public void onAdLoaded(Ad ad) {
-                if (DEBUG) {
-                    Log.d(TAG, "onAdLoaded: ");
-                }
-                addToLayout(mFbAdView);
-            }
+            mFbAdView = new AdView(this, placeId, adSize);
 
-            @Override
-            public void onAdClicked(Ad ad) {
-                if (DEBUG) {
-                    Log.d(TAG, "onAdClicked: ");
-                }
-            }
+            mFbAdView.setAdListener(new AdListener() {
 
-        });
-        if (DEBUG) {
-            //            AdSettings.addTestDevice("7d7fcc8ff3a053e48671f85990f1ab6d");//nexus 5
-            AdSettings.addTestDevice("55c4f301d7c1183f1fa6ede6b3f2fe2e");//坚果
+                @Override
+                public void onError(Ad ad, AdError error) {
+                    if (DEBUG) {
+                        Log.d(TAG, "onError: " + error.getErrorCode() + "," + error.getErrorMessage());
+                    }
+                }
+
+                @Override
+                public void onAdLoaded(Ad ad) {
+                    if (DEBUG) {
+                        Log.d(TAG, "onAdLoaded: ");
+                    }
+                    addToLayout(mFbAdView);
+                }
+
+                @Override
+                public void onAdClicked(Ad ad) {
+                    if (DEBUG) {
+                        Log.d(TAG, "onAdClicked: ");
+                    }
+                }
+
+            });
+            if (DEBUG) {
+                //            AdSettings.addTestDevice("7d7fcc8ff3a053e48671f85990f1ab6d");//nexus 5
+                AdSettings.addTestDevice("55c4f301d7c1183f1fa6ede6b3f2fe2e");//坚果
+            }
+            if (DEBUG) {
+                Log.d(TAG, "initFbAds:  mFbAdView.loadAd();");
+            }
+            mFbAdView.loadAd();
+        } catch (Exception e) {
+            if (DEBUG) {
+                e.printStackTrace();
+                Log.d(TAG, e.getMessage());
+            }
         }
-        if (DEBUG) {
-            Log.d(TAG, "initFbAds:  mFbAdView.loadAd();");
-        }
-        mFbAdView.loadAd();
 
     }
 
@@ -143,79 +150,85 @@ public class BaseActivity extends Activity {
     }
 
     private void initAdMobAds(String unitId, com.google.android.gms.ads.AdSize adSize) {
-        if (DEBUG) {
-            Log.d(TAG, "initAdMobAds: ");
-        }
-
-        if (TextUtils.isEmpty(unitId)) {
+        try {
             if (DEBUG) {
-                throw new IllegalArgumentException("unitId is empty!");
+                Log.d(TAG, "initAdMobAds: ");
             }
-            return;
+
+            if (TextUtils.isEmpty(unitId)) {
+                if (DEBUG) {
+                    throw new IllegalArgumentException("unitId is empty!");
+                }
+                return;
+            }
+            mAdMobAdView = new com.google.android.gms.ads.AdView(this);
+            mAdMobAdView.setAdUnitId(unitId);
+            mAdMobAdView.setAdSize(adSize);
+            mAdMobAdView.setAdListener(new com.google.android.gms.ads.AdListener() {
+                @Override
+                public void onAdClosed() {
+                    super.onAdClosed();
+                    if (DEBUG) {
+                        Log.d(TAG, "onAdClosed: ");
+                    }
+
+                }
+
+                @Override
+                public void onAdFailedToLoad(int i) {
+                    super.onAdFailedToLoad(i);
+                    if (DEBUG) {
+                        Log.d(TAG, "onAdFailedToLoad: i = " + i);
+                    }
+                }
+
+                @Override
+                public void onAdLeftApplication() {
+                    super.onAdLeftApplication();
+                    if (DEBUG) {
+                        Log.d(TAG, "onAdLeftApplication: ");
+                    }
+
+                }
+
+                @Override
+                public void onAdOpened() {
+                    super.onAdOpened();
+                    if (DEBUG) {
+                        Log.d(TAG, "onAdOpened: ");
+                    }
+
+                }
+
+                @Override
+                public void onAdLoaded() {
+                    super.onAdLoaded();
+                    if (DEBUG) {
+                        Log.d(TAG, "onAdLoaded: ");
+                    }
+                    addToLayout(mAdMobAdView);
+                }
+            });
+            AdRequest adRequest;
+            if (DEBUG) {
+                adRequest = new AdRequest.Builder()
+                        .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)// All emulators
+                        .addTestDevice("31387B9AE04ACC468BC9DF9DAFFF96A7")//坚果
+                        .build();
+            } else {
+                adRequest = new AdRequest.Builder()
+                        .build();
+            }
+            if (DEBUG) {
+                Log.d(TAG, "initAdMobAds: mAdMobAdView.loadAd(adRequest);");
+            }
+            mAdMobAdView.loadAd(adRequest);
+        } catch (Exception e) {
+            if (DEBUG) {
+                e.printStackTrace();
+                Log.d(TAG, e.getMessage());
+            }
         }
-        mAdMobAdView = new com.google.android.gms.ads.AdView(this);
-        mAdMobAdView.setAdUnitId(unitId);
-        mAdMobAdView.setAdSize(adSize);
-        mAdMobAdView.setAdListener(new com.google.android.gms.ads.AdListener() {
-            @Override
-            public void onAdClosed() {
-                super.onAdClosed();
-                if (DEBUG) {
-                    Log.d(TAG, "onAdClosed: ");
-                }
-
-            }
-
-            @Override
-            public void onAdFailedToLoad(int i) {
-                super.onAdFailedToLoad(i);
-                if (DEBUG) {
-                    Log.d(TAG, "onAdFailedToLoad: i = " + i);
-                }
-            }
-
-            @Override
-            public void onAdLeftApplication() {
-                super.onAdLeftApplication();
-                if (DEBUG) {
-                    Log.d(TAG, "onAdLeftApplication: ");
-                }
-
-            }
-
-            @Override
-            public void onAdOpened() {
-                super.onAdOpened();
-                if (DEBUG) {
-                    Log.d(TAG, "onAdOpened: ");
-                }
-
-            }
-
-            @Override
-            public void onAdLoaded() {
-                super.onAdLoaded();
-                if (DEBUG) {
-                    Log.d(TAG, "onAdLoaded: ");
-                }
-                addToLayout(mAdMobAdView);
-            }
-        });
-        AdRequest adRequest;
-        if (DEBUG) {
-            adRequest = new AdRequest.Builder()
-                    .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)// All emulators
-                    .addTestDevice("31387B9AE04ACC468BC9DF9DAFFF96A7")//坚果
-                    .build();
-        } else {
-            adRequest = new AdRequest.Builder()
-                    .build();
-        }
-        if (DEBUG) {
-            Log.d(TAG, "initAdMobAds: mAdMobAdView.loadAd(adRequest);");
-        }
-        mAdMobAdView.loadAd(adRequest);
-
     }
 
     private void addToLayout(View view) {

@@ -1,4 +1,4 @@
-package com.cpxiao.optical_illusions_spiral_eye.mode;
+package com.cpxiao.optical.illusions.spiral.eye.mode;
 
 /**
  * Extra

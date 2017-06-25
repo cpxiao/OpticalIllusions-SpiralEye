@@ -1,4 +1,4 @@
-package com.cpxiao.optical_illusions_spiral_eye.activity;
+package com.cpxiao.optical.illusions.spiral.eye.activity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -8,33 +8,27 @@ import android.view.View;
 import android.widget.Button;
 
 import com.cpxiao.gamelib.activity.BaseActivity;
-import com.cpxiao.optical_illusions_spiral_eye.R;
+import com.cpxiao.optical.illusions.spiral.eye.R;
 
 public class HomeActivity extends BaseActivity implements View.OnClickListener {
-
-    private Button mButtonWarning;
-    private Button mButtonTips;
-    private Button mButtonPlay;
-    private Button mButtonRating;
-    private Button mButtonShare;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        mButtonWarning = (Button) findViewById(R.id.warning);
-        mButtonTips = (Button) findViewById(R.id.tips);
-        mButtonPlay = (Button) findViewById(R.id.play);
-        mButtonRating = (Button) findViewById(com.cpxiao.optical_illusions_spiral_eye.R.id.rating);
-        mButtonShare = (Button) findViewById(R.id.share);
+        Button buttonWarning = (Button) findViewById(R.id.warning);
+        Button buttonTips = (Button) findViewById(R.id.tips);
+        Button buttonPlay = (Button) findViewById(R.id.play);
+        Button buttonRating = (Button) findViewById(R.id.rating);
+        Button buttonShare = (Button) findViewById(R.id.share);
 
-        mButtonWarning.setOnClickListener(this);
-        mButtonTips.setOnClickListener(this);
-        mButtonPlay.setOnClickListener(this);
-        mButtonRating.setOnClickListener(this);
-        mButtonShare.setOnClickListener(this);
+        buttonWarning.setOnClickListener(this);
+        buttonTips.setOnClickListener(this);
+        buttonPlay.setOnClickListener(this);
+        buttonRating.setOnClickListener(this);
+        buttonShare.setOnClickListener(this);
 
-        initAdMobAds50("ca-app-pub-4157365005379790/8009860462");
+//        initAdMobAds50("ca-app-pub-4157365005379790/8009860462");
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.cpxiao.optical_illusions_spiral_eye.activity;
+package com.cpxiao.optical.illusions.spiral.eye.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,7 +7,7 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.cpxiao.gamelib.activity.BaseActivity;
-import com.cpxiao.optical_illusions_spiral_eye.R;
+import com.cpxiao.optical.illusions.spiral.eye.R;
 
 import pl.droidsonroids.gif.GifImageView;
 
@@ -41,7 +41,7 @@ public class FullScreenActivity extends BaseActivity {
             }
         }
 
-        initAdMobAds50("ca-app-pub-4157365005379790/2175149663");
+//        initAdMobAds50("ca-app-pub-4157365005379790/2175149663");
     }
 
     @Override
