@@ -28,7 +28,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         buttonRating.setOnClickListener(this);
         buttonShare.setOnClickListener(this);
 
-//        initAdMobAds50("ca-app-pub-4157365005379790/8009860462");
+        initAdMobAds50("ca-app-pub-4157365005379790/8009860462");
     }
 
     @Override

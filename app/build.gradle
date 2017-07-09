@@ -7,8 +7,8 @@ android {
         applicationId "com.cpxiao.optical.illusions.spiral.eye"
         minSdkVersion 9
         targetSdkVersion 25
-        versionCode 111
-        versionName "1.1.1"
+        versionCode 112
+        versionName "1.1.2"
     }
     buildTypes {
         release {
@@ -21,7 +21,6 @@ android {
     //友盟多渠道打包
     productFlavors {
         gp {}
-
     }
     productFlavors.all {
         flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
@@ -57,9 +56,9 @@ android {
 dependencies {
     compile project(':AndroidUtils:library')
     compile project(':gamelib')
-
     compile 'com.android.support:recyclerview-v7:25.3.1'
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.7'
+    compile 'com.github.bumptech.glide:glide:4.0.0-RC1'
 }
 
 apply plugin: 'com.google.gms.google-services'

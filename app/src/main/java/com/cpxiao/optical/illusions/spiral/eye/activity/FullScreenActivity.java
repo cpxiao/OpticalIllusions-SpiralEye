@@ -5,11 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.widget.ImageView;
 
 import com.cpxiao.gamelib.activity.BaseActivity;
 import com.cpxiao.optical.illusions.spiral.eye.R;
 
-import pl.droidsonroids.gif.GifImageView;
 
 /**
  * @author cpxiao on 2017/05/22.
@@ -17,18 +17,19 @@ import pl.droidsonroids.gif.GifImageView;
 
 public class FullScreenActivity extends BaseActivity {
     private static final String ID = "ID";
-    private GifImageView imageView;
+    private ImageView imageView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fullscreen);
-        imageView = (GifImageView) findViewById(R.id.gif_image_view);
+        imageView = (ImageView) findViewById(R.id.gif_image_view);
         if (getIntent() != null) {
             Bundle bundle = getIntent().getExtras();
             if (bundle != null) {
                 int id = bundle.getInt(ID, -1);
                 if (id != -1) {
+                    //此处不要用glide加载，比较卡。用pl.droidsonroids.gif.GifImageView
                     imageView.setImageResource(id);
                 } else {
                     if (DEBUG) {
@@ -41,7 +42,7 @@ public class FullScreenActivity extends BaseActivity {
             }
         }
 
-//        initAdMobAds50("ca-app-pub-4157365005379790/2175149663");
+        initAdMobAds50("ca-app-pub-4157365005379790/2175149663");
     }
 
     @Override

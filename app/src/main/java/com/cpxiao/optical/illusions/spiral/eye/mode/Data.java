@@ -25,7 +25,15 @@ public class Data {
                 R.drawable._oi_gif_21, R.drawable._oi_gif_22,
                 R.drawable._oi_gif_23, R.drawable._oi_gif_24,
                 R.drawable._oi_gif_25, R.drawable._oi_gif_26,
-                R.drawable._oi_gif_27, R.drawable._oi_gif_28
+                R.drawable._oi_gif_27, R.drawable._oi_gif_28,
+                R.drawable._oi_gif_29, R.drawable._oi_gif_30,
+                R.drawable._oi_gif_31, R.drawable._oi_gif_32,
+//                R.drawable._oi_gif_33, R.drawable._oi_gif_34,
+//                R.drawable._oi_gif_35, R.drawable._oi_gif_36,
+//                R.drawable._oi_gif_37, R.drawable._oi_gif_38,
+//                R.drawable._oi_gif_39, R.drawable._oi_gif_40,
+//                R.drawable._oi_gif_41, R.drawable._oi_gif_42,
+
         };
 
         ArrayList<Integer> arrayList = new ArrayList<>();

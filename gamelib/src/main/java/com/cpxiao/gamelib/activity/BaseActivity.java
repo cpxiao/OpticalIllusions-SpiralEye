@@ -1,10 +1,12 @@
 package com.cpxiao.gamelib.activity;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
@@ -62,10 +64,12 @@ public class BaseActivity extends Activity {
             Log.d(TAG, "onDestroy: ");
         }
         if (mFbAdView != null) {
+            removeFromParent(mFbAdView);
             mFbAdView.destroy();
             mFbAdView = null;
         }
         if (mAdMobAdView != null) {
+            removeFromParent(mAdMobAdView);
             mAdMobAdView.destroy();
             mAdMobAdView = null;
         }
@@ -213,7 +217,7 @@ public class BaseActivity extends Activity {
             if (DEBUG) {
                 adRequest = new AdRequest.Builder()
                         .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)// All emulators
-                        .addTestDevice("31387B9AE04ACC468BC9DF9DAFFF96A7")//坚果
+                        .addTestDevice("BDA8B72ED91400B2467334AA0F06A878")//20170709 HUAWEI G621-TL00
                         .build();
             } else {
                 adRequest = new AdRequest.Builder()
@@ -238,8 +242,25 @@ public class BaseActivity extends Activity {
         if (view == null) {
             return;
         }
+        removeFromParent(view);
+
         LinearLayout layout = (LinearLayout) findViewById(R.id.ads_layout);
+        //设置背景色
+        layout.setBackgroundColor(Color.WHITE);
         layout.removeAllViews();
         layout.addView(view);
+    }
+
+    private void removeFromParent(View view) {
+        if (DEBUG) {
+            Log.d(TAG, "removeFromParent: ");
+        }
+        if (view == null) {
+            return;
+        }
+        ViewGroup parent = (ViewGroup) view.getParent();
+        if (parent != null) {
+            parent.removeView(view);
+        }
     }
 }

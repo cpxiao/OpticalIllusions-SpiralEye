@@ -11,12 +11,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.cpxiao.gamelib.activity.BaseActivity;
 import com.cpxiao.optical.illusions.spiral.eye.R;
 import com.cpxiao.optical.illusions.spiral.eye.mode.Data;
 
 import java.util.ArrayList;
-
 
 
 /**
@@ -26,19 +26,19 @@ import java.util.ArrayList;
 public class ListActivity extends BaseActivity {
 
     private static final int ROW_COUNT = 3;
-    private RecyclerView mRecyclerView;
+    private static final float ASPECT_RATIO = 1.3f;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
-        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        mRecyclerView.setLayoutManager(new GridLayoutManager(this, ROW_COUNT));
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, ROW_COUNT));
         ArrayList<Integer> arrayList = Data.getOIGifData();
         NormalAdapter adapter = new NormalAdapter(this, arrayList);
-        mRecyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(adapter);
 
-//        initAdMobAds50("ca-app-pub-4157365005379790/5268216868");
+        initAdMobAds50("ca-app-pub-4157365005379790/5268216868");
     }
 
 
@@ -57,7 +57,7 @@ public class ListActivity extends BaseActivity {
         public NormalViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = mLayoutInflater.inflate(R.layout.list_item, parent, false);
             GridLayoutManager.LayoutParams params = (GridLayoutManager.LayoutParams) view.getLayoutParams();
-            params.height = (int) (parent.getMeasuredWidth() / ROW_COUNT * 1.3);
+            params.height = (int) (parent.getMeasuredWidth() / ROW_COUNT * ASPECT_RATIO);
             view.setLayoutParams(params);
             return new NormalViewHolder(view);
         }
@@ -75,7 +75,10 @@ public class ListActivity extends BaseActivity {
 
             final int index = holder.getAdapterPosition();
             final Integer data = mDataList.get(index);
-            holder.mImageView.setImageResource(data);
+            Glide.with(ListActivity.this)
+                    .asBitmap()
+                    .load(data)
+                    .into(holder.mImageView);
             holder.mImageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
