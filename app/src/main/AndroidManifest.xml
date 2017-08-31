@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.cpxiao.optical.illusions.spiral.eye">
+          package="com.cpxiao">
 
     <!--facebook ad start-->
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -22,7 +22,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activity.HomeActivity"
+            android:name="com.cpxiao.optical.illusions.spiral.eye.activity.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -31,12 +31,12 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".activity.ListActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".activity.FullScreenActivity"
-            android:screenOrientation="portrait"/>
+        <!--<activity-->
+            <!--android:name="com.cpxiao.optical.illusions.spiral.eye.activity.ListActivity"-->
+            <!--android:screenOrientation="portrait"/>-->
+        <!--<activity-->
+            <!--android:name="com.cpxiao.optical.illusions.spiral.eye.activity.FullScreenActivity"-->
+            <!--android:screenOrientation="portrait"/>-->
 
         <meta-data
             android:name="UMENG_APPKEY"

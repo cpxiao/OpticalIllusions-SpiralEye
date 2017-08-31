@@ -5,10 +5,10 @@ android {
     buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.cpxiao.optical.illusions.spiral.eye"
-        minSdkVersion 9
+        minSdkVersion 15
         targetSdkVersion 25
-        versionCode 112
-        versionName "1.1.2"
+        versionCode 120
+        versionName "1.2.0"
     }
     buildTypes {
         release {
@@ -22,9 +22,11 @@ android {
     productFlavors {
         gp {}
     }
+
     productFlavors.all {
         flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
     }
+
     //修改生成的apk名字
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
@@ -55,10 +57,29 @@ android {
 
 dependencies {
     compile project(':AndroidUtils:library')
-    compile project(':gamelib')
+    compile 'com.android.support:appcompat-v7:25.3.1'
+
+    /**
+     * Ads Start
+     */
+    //友盟统计
+    compile 'com.umeng.analytics:analytics:latest.integration'
+    //Facebook广告
+//    compile files('libs/AudienceNetwork_v4.7.jar')
+//    compile 'com.facebook.android:audience-network-sdk:4.+'
+    compile 'com.facebook.android:audience-network-sdk:4.25.0'
+    //AdMob广告
+//    compile 'com.google.firebase:firebase-ads:9.4.0'
+    compile 'com.google.firebase:firebase-ads:11.0.0'
+    //ZAds SDK
+//    compile 'com.github.bumptech.glide:glide:3.7.0'//要放在前面几个库的后面
+    compile 'com.github.bumptech.glide:glide:4.0.0-RC1'
+    /**
+     * Ads End
+     */
+
     compile 'com.android.support:recyclerview-v7:25.3.1'
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.7'
-    compile 'com.github.bumptech.glide:glide:4.0.0-RC1'
 }
 
 apply plugin: 'com.google.gms.google-services'
