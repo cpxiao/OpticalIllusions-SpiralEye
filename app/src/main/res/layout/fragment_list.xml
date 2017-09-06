@@ -31,6 +31,6 @@
         android:textColor="@android:color/white"
         android:textSize="18sp"/>
 
-    <include layout="@layout/layout_ads"/>
+    <!--<include layout="@layout/layout_ads"/>-->
 
 </LinearLayout>

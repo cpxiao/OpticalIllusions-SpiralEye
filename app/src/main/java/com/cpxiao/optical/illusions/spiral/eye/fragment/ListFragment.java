@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +13,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.cpxiao.R;
+import com.cpxiao.gamelib.fragment.BaseZAdsFragment;
 import com.cpxiao.optical.illusions.spiral.eye.mode.Data;
+import com.cpxiao.zads.core.ZAdPosition;
 
 import java.util.ArrayList;
 
@@ -20,7 +23,7 @@ import java.util.ArrayList;
  * @author cpxiao on 2017/08/30.
  */
 
-public class ListFragment extends BaseFragment {
+public class ListFragment extends BaseZAdsFragment {
 
     private static final int ROW_COUNT = 3;
     private static final float ASPECT_RATIO = 1.3f;
@@ -36,6 +39,8 @@ public class ListFragment extends BaseFragment {
 
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
+        loadZAds(ZAdPosition.POSITION_LEVEL_LIST);
+
         Context context = view.getContext();
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new GridLayoutManager(view.getContext(), ROW_COUNT));
@@ -66,6 +71,8 @@ public class ListFragment extends BaseFragment {
             View view = mLayoutInflater.inflate(R.layout.list_item, parent, false);
             GridLayoutManager.LayoutParams params = (GridLayoutManager.LayoutParams) view.getLayoutParams();
             params.height = (int) (parent.getMeasuredWidth() / ROW_COUNT * ASPECT_RATIO);
+            Log.d(TAG, "onCreateViewHolder: " + params.width);
+            Log.d(TAG, "onCreateViewHolder: " + params.height);
             view.setLayoutParams(params);
             return new NormalViewHolder(view);
         }

@@ -1,4 +1,4 @@
-package com.cpxiao.optical.illusions.spiral.eye.fragment;
+package com.cpxiao.gamelib.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -16,7 +16,7 @@ import com.cpxiao.gamelib.activity.core.BaseActivity;
 
 public abstract class BaseFragment extends Fragment {
     protected static final boolean DEBUG = AppConfig.DEBUG;
-    //    protected String TAG = BaseFragment.class.getSimpleName();
+    //        protected String TAG = BaseFragment.class.getSimpleName();//这样只能获得"BaseFragment"
     protected String TAG;
 
     protected BaseActivity mActivity;

@@ -26,7 +26,7 @@ import java.util.Queue;
  */
 public class AdMobBannerAd extends BaseZAd {
     private static final String TAG = "AdMobBannerAd";
-    private static final String TEST_DEVICE = "67F59060394DB36B95B18F5EE5B5D735";
+    private static final String TEST_DEVICE = "3bcc341340550569d910c92a2dae2677";
 
     private AdView mAdManager;
 

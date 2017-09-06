@@ -28,11 +28,12 @@ public class Data {
                 R.drawable._oi_gif_27, R.drawable._oi_gif_28,
                 R.drawable._oi_gif_29, R.drawable._oi_gif_30,
                 R.drawable._oi_gif_31, R.drawable._oi_gif_32,
-                R.drawable._oi_gif_33, //R.drawable._oi_gif_34,
+                R.drawable._oi_gif_33, R.drawable._oi_gif_34,
                 /*R.drawable._oi_gif_35, */R.drawable._oi_gif_36,
-                //R.drawable._oi_gif_37, R.drawable._oi_gif_38,
+                R.drawable._oi_gif_37,// R.drawable._oi_gif_38,
                 //R.drawable._oi_gif_39, R.drawable._oi_gif_40,
                 R.drawable._oi_gif_41, R.drawable._oi_gif_42,
+                R.drawable._oi_gif_43, R.drawable._oi_gif_44,
 
         };
 
