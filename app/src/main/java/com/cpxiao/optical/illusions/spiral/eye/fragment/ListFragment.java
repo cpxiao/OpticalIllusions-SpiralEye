@@ -71,8 +71,10 @@ public class ListFragment extends BaseZAdsFragment {
             View view = mLayoutInflater.inflate(R.layout.list_item, parent, false);
             GridLayoutManager.LayoutParams params = (GridLayoutManager.LayoutParams) view.getLayoutParams();
             params.height = (int) (parent.getMeasuredWidth() / ROW_COUNT * ASPECT_RATIO);
-            Log.d(TAG, "onCreateViewHolder: " + params.width);
-            Log.d(TAG, "onCreateViewHolder: " + params.height);
+            if (DEBUG) {
+                Log.d(TAG, "onCreateViewHolder: " + params.width);
+                Log.d(TAG, "onCreateViewHolder: " + params.height);
+            }
             view.setLayoutParams(params);
             return new NormalViewHolder(view);
         }
@@ -86,19 +88,23 @@ public class ListFragment extends BaseZAdsFragment {
             if (position < 0 || position >= mDataList.size()) {
                 return;
             }
-            //            int level = PreferencesUtils.getInt(getApplicationContext(), Extra.Key.LEVEL, Extra.Key.LEVEL_DEFAULT);
 
             final int index = holder.getAdapterPosition();
-            final Integer data = mDataList.get(index);
-            Glide.with(mContext)
-                    .asBitmap()
-                    .load(data)
-                    .into(holder.mImageView);
+            final Integer resourceId = mDataList.get(index);
+            if (DEBUG) {
+                //此处不要用glide加载，比较卡。用pl.droidsonroids.gif.GifImageView
+                holder.mImageView.setImageResource(resourceId);
+            } else {
+                Glide.with(mContext)
+                        .asBitmap()
+                        .load(resourceId)
+                        .into(holder.mImageView);
+            }
             holder.mImageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Bundle bundle = new Bundle();
-                    bundle.putInt(FullscreenFragment.ID, data);
+                    bundle.putInt(FullscreenFragment.RESOURCE_ID, resourceId);
                     addFragment(FullscreenFragment.newInstance(bundle));
                 }
             });

@@ -13,7 +13,7 @@ import com.cpxiao.zads.core.ZAdPosition;
  */
 
 public class FullscreenFragment extends BaseZAdsFragment {
-    public static final String ID = "ID";
+    public static final String RESOURCE_ID = "RESOURCE_ID";
     private ImageView mImageView;
 
     public static FullscreenFragment newInstance(Bundle bundle) {
@@ -31,11 +31,11 @@ public class FullscreenFragment extends BaseZAdsFragment {
         mImageView = (ImageView) view.findViewById(R.id.gif_image_view);
         Bundle bundle = getArguments();
         if (bundle != null) {
-            int id = bundle.getInt(ID, -1);
-            if (id != -1) {
+            int resourceId = bundle.getInt(RESOURCE_ID, -1);
+            if (resourceId != -1) {
                 //此处不要用glide加载，比较卡。用pl.droidsonroids.gif.GifImageView
-                mImageView.setImageResource(id);
-                //                Glide.with(getActivity()).load(id).into(mImageView);
+                mImageView.setImageResource(resourceId);
+                //                Glide.with(getActivity()).load(resourceId).into(mImageView);
             } else {
                 onDestroy();
             }

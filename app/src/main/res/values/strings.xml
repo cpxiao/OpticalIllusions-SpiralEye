@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">Optical Illusions - Spiral Eye</string>
 
+    <string name="rate_app">Rate this app</string>
+    <string name="share">Share</string>
     <string name="warning">Warning</string>
     <string name="tips">Tips</string>
     <string name="play">Play</string>
-    <string name="rating">Rating</string>
-    <string name="share">Share</string>
     <string name="level">Level</string>
 
     <string name="warning_msg">
@@ -41,4 +41,5 @@
     <string name="start">Start</string>
 
     <string name="quit_msg">Quit the Application ?</string>
+    <string name="share_msg">"Share an app for you."</string>
 </resources>

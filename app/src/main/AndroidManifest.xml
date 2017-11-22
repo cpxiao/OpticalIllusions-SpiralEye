@@ -31,13 +31,6 @@
             </intent-filter>
         </activity>
 
-        <!--<activity-->
-            <!--android:name="com.cpxiao.optical.illusions.spiral.eye.activity.ListActivity"-->
-            <!--android:screenOrientation="portrait"/>-->
-        <!--<activity-->
-            <!--android:name="com.cpxiao.optical.illusions.spiral.eye.activity.FullScreenActivity"-->
-            <!--android:screenOrientation="portrait"/>-->
-
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="593f38d12ae85b78400010dd"/>

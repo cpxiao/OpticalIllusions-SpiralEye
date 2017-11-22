@@ -13,6 +13,4 @@
         android:scaleType="centerCrop"/>
 
 
-    <!--<include layout="@layout/layout_ads"/>-->
-
 </RelativeLayout>

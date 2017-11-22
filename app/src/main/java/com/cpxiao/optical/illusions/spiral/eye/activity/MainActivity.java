@@ -27,4 +27,10 @@ public class MainActivity extends BaseZAdsActivity {
         initFbAds90("1074299932671998_1149772785124712");
         loadZAds(ZAdPosition.POSITION_MAIN);
     }
+
+    @Override
+    protected void onDestroy() {
+        ZAdManager.getInstance().destroyAllPosition(getApplicationContext());
+        super.onDestroy();
+    }
 }
