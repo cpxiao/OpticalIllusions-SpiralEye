@@ -3,14 +3,15 @@ apply plugin: 'com.android.application'
 //apply plugin: 'com.antfortune.freeline'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '26.0.2'
+    compileSdkVersion 29
+    buildToolsVersion '29.0.2'
+
     defaultConfig {
         applicationId "com.cpxiao.optical.illusions.spiral.eye"
-        minSdkVersion 15
-        targetSdkVersion 25
-        versionCode 126
-        versionName "1.2.6"
+        minSdkVersion 16//fire base 最小16
+        targetSdkVersion 29
+        versionCode 206
+        versionName "2.0.6"
         flavorDimensions "channel"
     }
 
@@ -70,31 +71,38 @@ android {
 }
 
 dependencies {
-    compile project(':__AndroidUtils:library')
-    compile 'com.android.support:appcompat-v7:25.3.1'
+//    compile project(':__AndroidUtils:library')
+    implementation 'androidx.appcompat:appcompat:1.1.0'
 
     /**
      * Ads Start
      */
     //友盟统计
-    compile 'com.umeng.analytics:analytics:6.1.2'
-//    compile 'com.umeng.analytics:analytics:latest.integration'
+    implementation 'com.umeng.analytics:analytics:6.1.4'
+//    implementation 'com.umeng.analytics:analytics:latest.integration'
+
     //Facebook广告
-//    compile files('libs/AudienceNetwork_v4.7.jar')
-//    compile 'com.facebook.android:audience-network-sdk:4.+'
-    compile 'com.facebook.android:audience-network-sdk:4.25.0'
+//    implementation files('libs/AudienceNetwork_v4.7.jar')
+//    implementation 'com.facebook.android:audience-network-sdk:4.+'
+    implementation 'com.facebook.android:audience-network-sdk:4.25.0'
+
     //AdMob广告
-//    compile 'com.google.firebase:firebase-ads:9.4.0'
-    compile 'com.google.firebase:firebase-ads:11.0.0'
+//    implementation 'com.google.firebase:firebase-ads:9.4.0'
+//    implementation 'com.google.firebase:firebase-ads:18.3.0'
+//    implementation "com.google.firebase:firebase-ads:18.3.0"
+//    implementation 'com.google.android.gms:play-services-ads:18.3.0'
+//    implementation "com.google.firebase:firebase-core:17.2.1"// 用18.3.0版本会66738>65536
+    implementation "com.google.firebase:firebase-ads:17.2.1"// 用18.3.0版本会66738>65536，用ads不是core
+
     //ZAds SDK
-//    compile 'com.github.bumptech.glide:glide:3.7.0'//要放在前面几个库的后面
-    compile 'com.github.bumptech.glide:glide:4.0.0-RC1'
+//    implementation 'com.github.bumptech.glide:glide:3.7.0'//要放在前面几个库的后面
+    implementation 'com.github.bumptech.glide:glide:4.10.0'
     /**
      * Ads End
      */
 
-    compile 'com.android.support:recyclerview-v7:25.3.1'
-    compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.7'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+//    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.7'
 }
 
 apply plugin: 'com.google.gms.google-services'
