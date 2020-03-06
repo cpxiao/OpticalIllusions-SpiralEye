@@ -2,8 +2,10 @@ package com.cpxiao.optical.illusions.spiral.eye.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,9 +15,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.cpxiao.R;
-import com.cpxiao.gamelib.fragment.BaseZAdsFragment;
+import com.cpxiao.gamelib.fragment.BaseFragment;
 import com.cpxiao.optical.illusions.spiral.eye.mode.Data;
-import com.cpxiao.zads.core.ZAdPosition;
 
 import java.util.ArrayList;
 
@@ -23,7 +24,7 @@ import java.util.ArrayList;
  * @author cpxiao on 2017/08/30.
  */
 
-public class ListFragment extends BaseZAdsFragment {
+public class ListFragment extends BaseFragment {
 
     private static final int ROW_COUNT = 3;
     private static final float ASPECT_RATIO = 1.3f;
@@ -39,10 +40,9 @@ public class ListFragment extends BaseZAdsFragment {
 
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
-        loadZAds(ZAdPosition.POSITION_LEVEL_LIST);
 
         Context context = view.getContext();
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+        RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new GridLayoutManager(view.getContext(), ROW_COUNT));
         ArrayList<Integer> arrayList = Data.getOIGifData();
         NormalAdapter adapter = new NormalAdapter(context, arrayList);
@@ -92,8 +92,11 @@ public class ListFragment extends BaseZAdsFragment {
             final int index = holder.getAdapterPosition();
             final Integer resourceId = mDataList.get(index);
             if (DEBUG) {
-                //此处不要用glide加载，比较卡。用pl.droidsonroids.gif.GifImageView
-                holder.mImageView.setImageResource(resourceId);
+//                holder.mImageView.setImageResource(resourceId);//此处不要用glide加载，比较卡。用pl.droidsonroids.gif.GifImageView。
+                Glide.with(getHoldingActivity())
+                        .asGif()
+                        .load(resourceId)
+                        .into(holder.mImageView);// 20200305 glide加载gif效果也还不错
             } else {
                 Glide.with(mContext)
                         .asBitmap()
@@ -125,8 +128,8 @@ public class ListFragment extends BaseZAdsFragment {
 
             NormalViewHolder(View view) {
                 super(view);
-                mImageView = (ImageView) view.findViewById(R.id.image_view);
-                mTitle = (TextView) view.findViewById(R.id.title);
+                mImageView = view.findViewById(R.id.image_view);
+                mTitle = view.findViewById(R.id.title);
             }
         }
     }

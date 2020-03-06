@@ -10,14 +10,13 @@ import android.widget.ImageButton;
 import com.cpxiao.R;
 import com.cpxiao.androidutils.library.utils.RateAppUtils;
 import com.cpxiao.androidutils.library.utils.ShareAppUtils;
-import com.cpxiao.gamelib.fragment.BaseZAdsFragment;
-import com.cpxiao.zads.core.ZAdPosition;
+import com.cpxiao.gamelib.fragment.BaseFragment;
 
 /**
  * @author cpxiao on 2017/08/30.
  */
 
-public class HomeFragment extends BaseZAdsFragment implements View.OnClickListener {
+public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
     public static HomeFragment newInstance(Bundle bundle) {
         HomeFragment fragment = new HomeFragment();
@@ -29,13 +28,12 @@ public class HomeFragment extends BaseZAdsFragment implements View.OnClickListen
 
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
-        loadZAds(ZAdPosition.POSITION_HOME);
 
-        ImageButton buttonRateApp = (ImageButton) view.findViewById(R.id.rate_app);
-        ImageButton buttonShare = (ImageButton) view.findViewById(R.id.share);
-        ImageButton buttonWarning = (ImageButton) view.findViewById(R.id.warning);
-        ImageButton buttonTips = (ImageButton) view.findViewById(R.id.tips);
-        ImageButton buttonPlay = (ImageButton) view.findViewById(R.id.play);
+        ImageButton buttonRateApp = view.findViewById(R.id.rate_app);
+        ImageButton buttonShare = view.findViewById(R.id.share);
+        ImageButton buttonWarning = view.findViewById(R.id.warning);
+        ImageButton buttonTips = view.findViewById(R.id.tips);
+        ImageButton buttonPlay = view.findViewById(R.id.play);
 
         buttonRateApp.setOnClickListener(this);
         buttonShare.setOnClickListener(this);

@@ -32,6 +32,15 @@
         \tStep 2: Look at something around you.
     </string>
 
+    <string name="time_up_tips_title">
+        Congratulation!
+    </string>
+
+    <string name="time_up_tips">
+        Look around you.\n
+        You are high.\n
+    </string>
+
     <string name="list_title">Please choose an optical illusion</string>
 
     <string name="preview_title">Are you ready to produce an illusion?</string>

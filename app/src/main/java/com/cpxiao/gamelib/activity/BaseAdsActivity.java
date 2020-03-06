@@ -23,8 +23,8 @@ import com.umeng.analytics.MobclickAgent;
 /**
  * @author cpxiao on 2017/3/1.
  * @version cpxiao on 2017/3/17   更新打印log信息
- *          cpxiao on 2017/8/24   提取test device
- *          cpxiao on 2017/8/31   修改继承类
+ * cpxiao on 2017/8/24   提取test device
+ * cpxiao on 2017/8/31   修改继承类
  */
 public abstract class BaseAdsActivity extends BaseAppActivity {
     protected final String TEST_DEVICE_FB = AppConfig.TEST_DEVICE_FB;
@@ -237,7 +237,7 @@ public abstract class BaseAdsActivity extends BaseAppActivity {
         }
         removeFromParent(view);
 
-        LinearLayout layout = (LinearLayout) findViewById(R.id.layout_ads);
+        LinearLayout layout = findViewById(R.id.layout_ads);
         layout.removeAllViews();
         layout.addView(view);
     }
